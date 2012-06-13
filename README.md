@@ -57,9 +57,9 @@ pretty much like this:
 That way you get meaningful error messages and early failures while developing
 and testing, without sacrificing performance in production.
 
-You should of course use whatever is optimized better by the JavaScript engines
-in areas of the code that needs to be highly optimized. At the time of writing
-that would be the pseudo-classical function constructors and `new`.
+In areas of the code that needs to be highly optimized, you should of course use
+whatever is optimized better by current JavaScript engines . At the time of
+writing that would be the pseudo-classical function constructors and `new`.
 
 ## Dependencies
 
