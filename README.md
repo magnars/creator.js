@@ -48,11 +48,13 @@ In which
 In a production environment, you can use a much simplified version of creator,
 pretty much like this:
 
-    var create = function (params) {
-        return Object.extend(Object.create(this), params);
+    var create = function (defaults, params) {
+        return _.extend(Object.create(this), defaults, params);
     };
 
-    var creator = function () { return create; };
+    var creator = function (name, options) {
+        return _.partial(create, options.defaults);
+    };
 
 That way you get meaningful error messages and early failures while developing
 and testing, without sacrificing performance in production.
