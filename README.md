@@ -42,3 +42,21 @@ In which
 * `required` is a list of parameters that are required,
 * `defaults` is a list of parameters that are optional with defaults, and
 * `strict` makes it complain about unknown parameters.
+
+## Won't someone think of the performance
+
+In a production environment, you can use a much simplified version of creator,
+pretty much like this:
+
+    var create = function (params) {
+        return Object.extend(Object.create(this), params);
+    };
+
+    var creator = function () { return create; };
+
+That way you get meaningful error messages and early failures while developing
+and testing, without sacrificing performance in production.
+
+You should of course use whatever is optimized better by the JavaScript engines
+in areas of the code that needs to be highly optimized. At the time of writing
+that would be the pseudo-classical function constructors and `new`.
