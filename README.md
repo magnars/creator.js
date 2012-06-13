@@ -4,7 +4,7 @@ A tiny library for creating create-methods for your objects.
 
 These are some things I like:
 
- * Using `Object.create`
+ * Using `Object.create`.
  * Having objects with their own `create` method.
  * Create-methods that take named parameters.
  * Failing early.

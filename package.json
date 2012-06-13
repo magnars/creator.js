@@ -1,0 +1,20 @@
+{
+  "name": "creator.js",
+  "version": "0.0.1",
+  "main": "./lib/creator",
+  "description": "A tiny library for creating create-methods for your objects.",
+  "author": "Magnar Sveen <magnars@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/magnars/creator.js.git"
+  },
+  "homepage": "https://github.com/magnars/creator.js",
+  "scripts": { "test": "buster test" },
+  "devDependencies": { "buster": "*" }
+  "engines": { "node": "0.6+" },
+  "keywords": ["create"],
+  "licenses": [{
+    "type": "BSD",
+    "url": "http://www.opensource.org/licenses/bsd-license.php"
+  }]
+}
