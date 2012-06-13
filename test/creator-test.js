@@ -30,6 +30,52 @@ if (typeof require === "function" && typeof module !== "undefined") {
         var obj = this.banana.create({ curvature: 23 });
         assert.equals(obj.curvature, 23);
       }
+    },
+
+    "required parameters": {
+      setUp: function () {
+        this.banana = {
+          create: creator("banana", {
+            required: ["color", "curvature"]
+          })
+        };
+      },
+
+      "stay quiet when all are present": function () {
+        refute.exception(function () {
+          this.banana.create({ color: "brown",  curvature: "42" });
+        }.bind(this));
+      },
+
+      "complain when all params are missing": function () {
+        try {
+          this.banana.create();
+        } catch (e) {
+          var expected = "banana.create: missing params { color, curvature }";
+          assert.equals(e.message, expected);
+        }
+      },
+
+      "complain when some params are missing": function () {
+        try {
+          this.banana.create({ color: "green" });
+        } catch (e) {
+          var expected = "banana.create: missing params { curvature }";
+          assert.equals(e.message, expected);
+        }
+      },
+
+      "has a shorthand API": function () {
+        var banana = {
+          create: creator("banana", ["color", "curvature"])
+        };
+        try {
+          banana.create({ color: "green" });
+        } catch (e) {
+          var expected = "banana.create: missing params { curvature }";
+          assert.equals(e.message, expected);
+        }
+      }
     }
 
   });

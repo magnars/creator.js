@@ -61,6 +61,11 @@ You should of course use whatever is optimized better by the JavaScript engines
 in areas of the code that needs to be highly optimized. At the time of writing
 that would be the pseudo-classical function constructors and `new`.
 
+## Dependencies
+
+Right now creator.js is dependent on either underscore or lodash. I am
+considering removing that dependency given enough pressure to do so. :-P
+
 ## License
 
 BSD 2-clause license. http://www.opensource.org/licenses/bsd-license.php

@@ -10,8 +10,9 @@
   },
   "homepage": "https://github.com/magnars/creator.js",
   "scripts": { "test": "buster test" },
-  "devDependencies": { "buster": "*" }
-  "engines": { "node": "0.6+" },
+  "dependencies": { "lodash": ">=0.3" },
+  "devDependencies": { "buster": "*" },
+  "engines": { "node": ">=0.6" },
   "keywords": ["create"],
   "licenses": [{
     "type": "BSD 2-Clause license",
