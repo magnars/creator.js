@@ -7,17 +7,30 @@ if (typeof require === "function" && typeof module !== "undefined") {
   "use strict";
 
   buster.testCase('Creator', {
-    "creates a function that creates objects": function () {
-      var banana = {
-        create: creator("banana", []),
-        color: "green"
-      };
+    "creates a function that creates objects that": {
+      setUp: function () {
+        this.banana = {
+          create: creator("banana", []),
+          color: "green"
+        };
+      },
 
-      var obj = banana.create();
-      assert.equals(obj.color, "green");
+      "inherit from this": function () {
+        var obj = this.banana.create();
+        assert.equals(obj.color, "green");
+      },
 
-      obj.color = "brown";
-      assert.equals(banana.color, "green");
+      "changes independently of this": function () {
+        var obj = this.banana.create();
+        obj.color = "brown";
+        assert.equals(this.banana.color, "green");
+      },
+
+      "is extended with the given parameters": function () {
+        var obj = this.banana.create({ curvature: 23 });
+        assert.equals(obj.curvature, 23);
+      }
     }
+
   });
 }());
