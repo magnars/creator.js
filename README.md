@@ -63,8 +63,12 @@ that would be the pseudo-classical function constructors and `new`.
 
 ## Dependencies
 
-Right now creator.js is dependent on either underscore or lodash. I am
-considering removing that dependency given enough pressure to do so. :-P
+Right now creator.js is dependent on
+[lodash](https://github.com/bestiejs/lodash), a drop-in replacement for
+underscore that has a suite of unit tests, supports AMD and to top it off has
+some significant performance improvements.
+
+I am considering removing the dependency given enough pressure to do so. :-P
 
 ## License
 
