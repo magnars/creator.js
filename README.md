@@ -60,3 +60,7 @@ and testing, without sacrificing performance in production.
 You should of course use whatever is optimized better by the JavaScript engines
 in areas of the code that needs to be highly optimized. At the time of writing
 that would be the pseudo-classical function constructors and `new`.
+
+## License
+
+BSD 2-clause license. http://www.opensource.org/licenses/bsd-license.php

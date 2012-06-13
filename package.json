@@ -14,7 +14,7 @@
   "engines": { "node": "0.6+" },
   "keywords": ["create"],
   "licenses": [{
-    "type": "BSD",
+    "type": "BSD 2-Clause license",
     "url": "http://www.opensource.org/licenses/bsd-license.php"
   }]
 }
