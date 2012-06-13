@@ -1,5 +1,5 @@
 {
-  "name": "creator.js",
+  "name": "creator",
   "version": "0.0.1",
   "main": "./lib/creator",
   "description": "A tiny library for creating create-methods for your objects.",
