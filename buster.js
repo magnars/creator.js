@@ -6,7 +6,7 @@ config["Server tests"] = {
 };
 
 config["Browser tests"] = {
-  sources: ["lib/**/*.js"],
+  sources: ["creator.js"],
   tests: ["test/**/*-test.js"],
   environment: "browser"
 };

@@ -1,6 +1,6 @@
 if (typeof require === "function" && typeof module !== "undefined") {
   var buster = require("buster");
-  var creator = require("../lib/creator");
+  var creator = require("../creator");
 }
 
 (function () {
