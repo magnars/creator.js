@@ -76,6 +76,25 @@ if (typeof require === "function" && typeof module !== "undefined") {
           assert.equals(e.message, expected);
         }
       }
+    },
+
+    "default parameters": {
+      setUp: function () {
+        this.banana = {
+          create: creator("banana", {
+            defaults: { color: "green", curvature: 23 }
+          })
+        };
+      },
+
+      "are added": function () {
+        assert.equals(this.banana.create().color, "green");
+      },
+
+      "are overwritten": function () {
+        var b = this.banana.create({ color: "yellow" });
+        assert.equals(b.color, "yellow");
+      }
     }
 
   });
