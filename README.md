@@ -40,7 +40,7 @@ Or if you need more options:
 In which
 
 * `required` is a list of parameters that are required,
-* `defaults` is a list of parameters that are optional with defaults, and
+* `defaults` is a map of parameter:value pairs that are optional with defaults, and
 * `strict` makes it complain about unknown parameters.
 
 ## Won't someone think of the performance
