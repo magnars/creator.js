@@ -17,7 +17,7 @@ var creator = (function (undefined) {
     return keys;
   };
 
-  var extend = Object.extend || function (obj) {
+  var extend = function (obj) {
     var i, l, sources = slice.call(arguments, 1);
     for (i = 0, l = sources.length; i < l; i += 1) {
       for (var prop in sources[i]) {
