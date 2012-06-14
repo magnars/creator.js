@@ -61,7 +61,8 @@ and testing, without sacrificing performance in production.
 
 In areas of code that needs to be highly optimized, you should of course use
 whatever is optimized better by current JavaScript engines. At the time of
-writing that would be the pseudo-classical function constructors and `new`.
+writing that would be the pseudo-classical inheritance style, with function
+constructors and `new`.
 
 ## License
 
