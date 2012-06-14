@@ -1,6 +1,6 @@
 {
   "name": "creator",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "./creator",
   "description": "A tiny library for creating create-methods for your objects.",
   "author": "Magnar Sveen <magnars@gmail.com>",
@@ -10,7 +10,6 @@
   },
   "homepage": "https://github.com/magnars/creator.js",
   "scripts": { "test": "buster test" },
-  "dependencies": { "lodash": ">=0.3" },
   "devDependencies": { "buster": "*" },
   "engines": { "node": ">=0.6" },
   "keywords": ["create"],

@@ -1,8 +1,52 @@
-if (typeof require === "function" && typeof module !== "undefined") {
-  var _ = require("lodash");
-}
-
 var creator = (function (undefined) {
+  var arrayProto = Array.prototype;
+  var slice = arrayProto.slice;
+  var toString = Object.prototype.toString;
+
+  var isArray = Array.isArray || function (value) {
+    return toString.call(value) == "[object Array]";
+  };
+
+  var keys = Object.keys || function (obj) {
+    var keys = [];
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        keys[keys.length] = key;
+      }
+    }
+    return keys;
+  };
+
+  var extend = Object.extend || function (obj) {
+    var i, l, sources = slice.call(arguments, 1);
+    for (i = 0, l = sources.length; i < l; i += 1) {
+      for (var prop in sources[i]) {
+        obj[prop] = sources[i][prop];
+      }
+    }
+    return obj;
+  };
+
+  var indexOf = arrayProto.indexOf || function (item) {
+    var i, l;
+    for (i = 0, l = this.length; i < l; i++) {
+      if (i in this && this[i] === item) {
+        return i;
+      }
+    }
+    return -1;
+  };
+
+  function difference(a1, a2) {
+    var i, l, d = [];
+    for (i = 0, l = a1.length; i < l; i++) {
+      if (a2.indexOf(a1[i]) < 0) {
+        d[d.length] = a1[i];
+      }
+    }
+    return d;
+  }
+
   function F() {}
 
   function create(o) {
@@ -10,8 +54,15 @@ var creator = (function (undefined) {
     return new F();
   }
 
+  function partial(fn) {
+    var args = slice.call(arguments, 1);
+    return function () {
+      return fn.apply(this, args.concat(slice.call(arguments)));
+    };
+  }
+
   function createAndExtend(defaults, params) {
-    return _.extend(create(this), defaults, params);
+    return extend(create(this), defaults, params);
   }
 
   function throwError(name, msg) {
@@ -20,7 +71,7 @@ var creator = (function (undefined) {
 
   function checkRequired(required, create, fail) {
     return function (params) {
-      var missing = params ? _.difference(required, _.keys(params)) : required;
+      var missing = params ? difference(required, keys(params)) : required;
       if (missing.length) {
         fail("missing params { " + missing.join(", ") + " }");
       } else {
@@ -30,9 +81,9 @@ var creator = (function (undefined) {
   }
 
   function beStrict(required, defaults, create, fail) {
-    var known = required.concat(_.keys(defaults));
+    var known = required.concat(keys(defaults));
     return function (params) {
-      var unknown = params ? _.difference(_.keys(params), known) : [];
+      var unknown = params ? difference(keys(params), known) : [];
       if (unknown.length) {
         fail("unknown params { " + unknown.join(", ") + " }");
       } else {
@@ -42,7 +93,7 @@ var creator = (function (undefined) {
   }
 
   function sanitize(options) {
-    if (_.isArray(options)) {
+    if (isArray(options)) {
       options = { required: options };
     }
     options.required = options.required || [];
@@ -53,8 +104,8 @@ var creator = (function (undefined) {
   function creator(name, options) {
     options = sanitize(options);
 
-    var create = _.partial(createAndExtend, options.defaults);
-    var fail = _.partial(throwError, name);
+    var create = partial(createAndExtend, options.defaults);
+    var fail = partial(throwError, name);
     if (options.strict) {
       create = beStrict(options.required, options.defaults, create, fail);
     }
