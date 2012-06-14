@@ -1,10 +1,9 @@
 var creator = (function (undefined) {
   var arrayProto = Array.prototype;
   var slice = arrayProto.slice;
-  var toString = Object.prototype.toString;
 
   var isArray = Array.isArray || function (value) {
-    return toString.call(value) == "[object Array]";
+    return Object.prototype.toString.call(value) == "[object Array]";
   };
 
   var keys = Object.keys || function (obj) {
