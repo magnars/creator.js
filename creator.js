@@ -39,7 +39,7 @@ var creator = (function (undefined) {
   function difference(a1, a2) {
     var i, l, d = [];
     for (i = 0, l = a1.length; i < l; i++) {
-      if (a2.indexOf(a1[i]) < 0) {
+      if (indexOf.call(a2, a1[i]) < 0) {
         d[d.length] = a1[i];
       }
     }
