@@ -9,7 +9,9 @@
     "url": "https://github.com/magnars/creator.js.git"
   },
   "homepage": "https://github.com/magnars/creator.js",
-  "scripts": { "test": "buster test" },
+  "scripts": {
+    "test": "./node_modules/buster/bin/buster-test"
+  },
   "devDependencies": { "buster": "*" },
   "engines": { "node": ">=0.6" },
   "keywords": ["create"],
