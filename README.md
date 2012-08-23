@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/magnars/creator.js.png)](http://travis-ci.org/magnars/creator.js)
 # creator.js
 
 A tiny library for creating create-methods for your objects.
